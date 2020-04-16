@@ -17,14 +17,13 @@ RUN yum-config-manager --enable nginx-stable \
     && sed -i 's@apache@nginx@g' /etc/php-fpm.d/www.conf \
     && sed -i 's@listen = 127.0.0.1:9000@listen = /var/run/php-fpm.sock@g' /etc/php-fpm.d/www.conf \
     && mkdir /run/php-fpm \
+    && rm -rf /usr/share/nginx/html \
     && curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/usr/local/bin --filename=composer \
     && yum clean all 
-
 
 ADD nginx-site.conf /usr/local/nginx/conf.d/default.conf
 ADD cloudflare.pem /usr/local/nginx/conf/ssl/cloudflare.pem
 ADD cloudflare.key /usr/local/nginx/conf/ssl/cloudflare.key
-
 
 COPY start.sh /start.sh
 
