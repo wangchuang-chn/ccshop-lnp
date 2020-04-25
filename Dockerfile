@@ -12,7 +12,7 @@ RUN yum-config-manager --enable nginx-stable \
     && yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     && yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
     && yum-config-manager --enable remi-php71 \
-    && yum -y install php  php-mysqlnd php-devel php-pear php-opcache php-pdo php-pecl-apcu php-fpm git php-mbstring php-gd php-pecl-zip \
+    && yum -y install php  php-mysqlnd php-devel php-pear php-opcache php-pdo php-pecl-apcu php-fpm git php-mbstring php-gd php-pecl-zip redis \
     && sed -i 's@memory_limit.*@memory_limit = 1024M@g' /etc/php.ini \
     && sed -i 's@apache@nginx@g' /etc/php-fpm.d/www.conf \
     && sed -i 's@listen = 127.0.0.1:9000@listen = /var/run/php-fpm.sock@g' /etc/php-fpm.d/www.conf \
