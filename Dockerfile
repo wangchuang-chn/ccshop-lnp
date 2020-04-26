@@ -29,13 +29,16 @@ RUN yum-config-manager --enable nginx-stable \
     && echo_supervisord_conf > /etc/supervisord.conf \
     && sed -i '140 s/;//g' /etc/supervisord.conf \
     && sed -i '141 s/;//g' /etc/supervisord.conf \
-    && sed -i 's@^files.*@files = /etc/supervisord/*.conf@g' /etc/supervisord.conf
+    && sed -i 's@^files.*@files = /etc/supervisord/*.conf@g' /etc/supervisord.conf \
+    && cd / \
+    && rm -rf supervisor-3.3.0.tar.gz supervisor-3.3.0 
 
 
 ADD nginx-site.conf /usr/local/nginx/conf.d/default.conf
 ADD cloudflare.pem /usr/local/nginx/conf/ssl/cloudflare.pem
 ADD cloudflare.key /usr/local/nginx/conf/ssl/cloudflare.key
 ADD ccshop.conf /etc/supervisord/
+
 
 COPY start.sh /start.sh
 
