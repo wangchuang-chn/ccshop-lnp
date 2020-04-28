@@ -2,7 +2,8 @@ FROM centos:centos7
 
 MAINTAINER wangchuang<mail.wangchuang@gmail.com>
 
-EXPOSE 80 443
+EXPOSE 80
+EXPOSE 443
 
 ADD nginx.repo /etc/yum.repos.d/
 
