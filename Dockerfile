@@ -19,6 +19,8 @@ RUN yum-config-manager --enable nginx-stable \
     && sed -i 's@memory_limit.*@memory_limit = 1024M@g' /etc/php.ini \
     && sed -i 's@apache@nginx@g' /etc/php-fpm.d/www.conf \
     && sed -i 's@listen = 127.0.0.1:9000@listen = /var/run/php-fpm.sock@g' /etc/php-fpm.d/www.conf \
+    && sed -i 's@;listen.owner.*@listen.owner = nginx@g' /etc/php-fpm.d/www.conf \
+    && sed -i 's@;listen.group.*@listen.group = nginx@g' /etc/php-fpm.d/www.conf \
     && mkdir /run/php-fpm \
     && rm -rf /usr/share/nginx/html \
     && curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/usr/local/bin --filename=composer \
