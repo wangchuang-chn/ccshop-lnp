@@ -35,9 +35,9 @@ RUN yum-config-manager --enable nginx-stable \
     && rm -rf supervisor-3.3.0.tar.gz  supervisor-3.3.0 
 
 
-ADD nginx-site.conf /usr/local/nginx/conf.d/default.conf
-ADD cloudflare.pem /usr/local/nginx/conf/ssl/cloudflare.pem
-ADD cloudflare.key /usr/local/nginx/conf/ssl/cloudflare.key
+ADD nginx-site.conf /etc/nginx/conf.d/default.conf
+ADD cloudflare.pem /etc/nginx/ssl/cloudflare.pem
+ADD cloudflare.key /etc/nginx/ssl/cloudflare.key
 ADD ccshop.conf /etc/supervisord/
 
 
