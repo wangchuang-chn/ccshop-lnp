@@ -25,7 +25,8 @@ RUN yum-config-manager --enable nginx-stable \
     && yum clean all  \
     && wget https://files.pythonhosted.org/packages/44/80/d28047d120bfcc8158b4e41127706731ee6a3419c661e0a858fb0e7c4b2d/supervisor-3.3.0.tar.gz \
     && tar xf supervisor-3.3.0.tar.gz \
-    && python supervisor-3.3.0/setup.py install \
+    && cd supervisor-3.3.0/ \
+    && python setup.py install \
     && echo_supervisord_conf > /etc/supervisord.conf \
     && sed -i '140 s/;//g' /etc/supervisord.conf \
     && sed -i '141 s/;//g' /etc/supervisord.conf \
