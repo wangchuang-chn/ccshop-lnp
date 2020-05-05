@@ -17,6 +17,7 @@ RUN yum-config-manager --enable nginx-stable \
     && yum -y install php  php-mysqlnd php-devel php-pear php-opcache php-pdo php-pecl-apcu php-fpm git php-mbstring php-gd php-pecl-zip php-bcmath redis wget  python-setuptools\
     && echo "maxmemory-policy  allkeys-lru " >> /etc/redis.conf \
     && echo "maxmemory 2147483648 " >> /etc/redis.conf \
+    && sed -i 's@daemonize.*@daemonize yes@g' /etc/redis.conf \
     && sed -i 's@memory_limit.*@memory_limit = 1024M@g' /etc/php.ini \
     && sed -i 's@apache@nginx@g' /etc/php-fpm.d/www.conf \
     && sed -i 's@listen = 127.0.0.1:9000@listen = /var/run/php-fpm.sock@g' /etc/php-fpm.d/www.conf \
