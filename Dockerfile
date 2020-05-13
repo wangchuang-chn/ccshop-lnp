@@ -14,7 +14,7 @@ RUN yum-config-manager --enable nginx-stable \
     && yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
     && yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
     && yum-config-manager --enable remi-php71 \
-    && yum -y install php  php-mysqlnd php-devel php-pear php-opcache php-pdo php-pecl-apcu php-fpm git php-mbstring php-gd php-pecl-zip php-bcmath redis wget  python-setuptools\
+    && yum -y install php  php-mysqlnd php-devel php-pear php-opcache php-pdo php-pecl-apcu php-fpm git php-mbstring php-gd php-pecl-zip php-bcmath redis wget  python-setuptools crontabs \
     && echo "maxmemory-policy  allkeys-lru " >> /etc/redis.conf \
     && echo "maxmemory 2147483648 " >> /etc/redis.conf \
     && sed -i 's@daemonize.*@daemonize yes@g' /etc/redis.conf \
