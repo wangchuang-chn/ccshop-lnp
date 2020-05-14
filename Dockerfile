@@ -37,7 +37,7 @@ RUN yum-config-manager --enable nginx-stable \
     && sed -i 's@^files.*@files = /etc/supervisord/*.conf@g' /etc/supervisord.conf \
     && cd / \
     && rm -rf supervisor-3.3.0.tar.gz  supervisor-3.3.0 \
-    && echo "*/1 * * * * nginx  /usr/local/php/bin/php /usr/share/nginx/html/artisan schedule:run >> /dev/null 2>&1 " \
+    && echo "*/1 * * * * nginx  /usr/local/php/bin/php /usr/share/nginx/html/artisan schedule:run >> /dev/null 2>&1 "  >> /etc/crontab \
     && sed -i 's@required@include@g' /etc/pam.d/crond
 
 
