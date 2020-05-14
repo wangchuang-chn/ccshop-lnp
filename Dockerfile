@@ -48,6 +48,7 @@ ADD ccshop.conf /etc/supervisord/
 
 
 COPY start.sh /start.sh
+COPY cron-start.sh /cron-start.sh
 
 
 CMD ["/bin/sh", "/start.sh"]
