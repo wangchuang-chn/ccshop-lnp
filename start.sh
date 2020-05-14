@@ -4,5 +4,6 @@
 /usr/sbin/nginx
 while :
 do
-    sleep 3600
+    sleep 60
+    /usr/bin/php /usr/share/nginx/html/artisan ccshop:clear-tags-cache
 done
